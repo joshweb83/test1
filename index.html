@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>든이의 계산기 - Deun's Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="calculator">
+        <div class="brand">
+            <div class="brand-name">든이의 계산기</div>
+            <div class="model">Deun's Calculator</div>
+            <div class="product-code">DC-2024</div>
+        </div>
+        <div class="display">
+            <div class="history" id="history"></div>
+            <div class="current" id="current">0</div>
+        </div>
+        
+        <div class="buttons">
+            <!-- 첫 번째 줄 -->
+            <button class="btn function" onclick="clearEntry()">CE</button>
+            <button class="btn function" onclick="clearAll()">C</button>
+            <button class="btn function" onclick="backspace()">⌫</button>
+            <button class="btn operator" onclick="inputOperator('/')">÷</button>
+            
+            <!-- 두 번째 줄 -->
+            <button class="btn number" onclick="inputNumber('7')">7</button>
+            <button class="btn number" onclick="inputNumber('8')">8</button>
+            <button class="btn number" onclick="inputNumber('9')">9</button>
+            <button class="btn operator" onclick="inputOperator('*')">×</button>
+            
+            <!-- 세 번째 줄 -->
+            <button class="btn number" onclick="inputNumber('4')">4</button>
+            <button class="btn number" onclick="inputNumber('5')">5</button>
+            <button class="btn number" onclick="inputNumber('6')">6</button>
+            <button class="btn operator" onclick="inputOperator('-')">-</button>
+            
+            <!-- 네 번째 줄 -->
+            <button class="btn number" onclick="inputNumber('1')">1</button>
+            <button class="btn number" onclick="inputNumber('2')">2</button>
+            <button class="btn number" onclick="inputNumber('3')">3</button>
+            <button class="btn operator" onclick="inputOperator('+')">+</button>
+            
+            <!-- 다섯 번째 줄 -->
+            <button class="btn function" onclick="toggleSign()">±</button>
+            <button class="btn number" onclick="inputNumber('0')">0</button>
+            <button class="btn function" onclick="inputDecimal()">.</button>
+            <button class="btn equals" onclick="calculate()">=</button>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
