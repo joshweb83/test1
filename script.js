@@ -2,12 +2,23 @@
 const canvas = document.getElementById('tetris');
 const ctx = canvas.getContext('2d');
 
-// 한 칸의 크기
-const BLOCK_SIZE = 20;
-
 // 게임판 크기 (가로 12칸, 세로 20칸)
 const BOARD_WIDTH = 12;
 const BOARD_HEIGHT = 20;
+
+// 화면 크기에 맞게 캔버스 크기 설정
+function setCanvasSize() {
+    const maxWidth = Math.min(300, window.innerWidth - 40);
+    const blockSize = Math.floor(maxWidth / BOARD_WIDTH);
+
+    canvas.width = blockSize * BOARD_WIDTH;
+    canvas.height = blockSize * BOARD_HEIGHT;
+
+    return blockSize;
+}
+
+// 한 칸의 크기 (동적으로 계산)
+let BLOCK_SIZE = setCanvasSize();
 
 // 게임판 배열 만들기 (0은 비어있음, 1은 블록이 있음)
 let board = [];
@@ -446,4 +457,10 @@ document.getElementById('dropBtn').addEventListener('click', () => {
         drop();
         draw();
     }
+});
+
+// 화면 크기 변경시 캔버스 크기 재조정
+window.addEventListener('resize', () => {
+    BLOCK_SIZE = setCanvasSize();
+    draw();
 });

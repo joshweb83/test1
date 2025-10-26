@@ -66,6 +66,8 @@ h1 {
     display: block;
     margin: 0 auto 20px;
     box-shadow: 0 0 15px rgba(0, 255, 0, 0.3);
+    max-width: 100%;
+    height: auto;
 }
 
 /* 버튼들 */
@@ -213,9 +215,7 @@ button:active {
     }
 
     #tetris {
-        width: 240px;
-        height: 400px;
-        max-width: 90%;
+        max-width: 100%;
     }
 
     /* 모바일에서는 설명 숨기기 */
