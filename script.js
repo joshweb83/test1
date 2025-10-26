@@ -33,16 +33,16 @@ let currentPiece = null;
 let currentX = 0;
 let currentY = 0;
 
-// 블록의 색깔들 (무지개색!)
+// 블록의 색깔들 (클래식 테트리스!)
 const COLORS = [
     null,
-    '#FF6B6B',  // 빨강
-    '#4ECDC4',  // 청록
-    '#45B7D1',  // 파랑
-    '#FFA07A',  // 주황
-    '#98D8C8',  // 민트
-    '#F7DC6F',  // 노랑
-    '#BB8FCE'   // 보라
+    '#00FFFF',  // 시안 (I)
+    '#FFFF00',  // 노랑 (O)
+    '#FF00FF',  // 마젠타 (T)
+    '#00FF00',  // 녹색 (S)
+    '#FF0000',  // 빨강 (Z)
+    '#0000FF',  // 파랑 (J)
+    '#FFA500'   // 주황 (L)
 ];
 
 // 테트리스 블록 모양들
@@ -78,7 +78,7 @@ const PIECES = [
 // 게임판 그리기
 function drawBoard() {
     // 배경을 검은색으로 칠하기
-    ctx.fillStyle = '#1a1a2e';
+    ctx.fillStyle = '#000000';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
     // 게임판의 각 칸 그리기
@@ -338,9 +338,9 @@ function pauseGame() {
     const pauseBtn = document.getElementById('pauseBtn');
 
     if (gamePaused) {
-        pauseBtn.textContent = '▶️ 계속';
+        pauseBtn.textContent = 'RESUME';
     } else {
-        pauseBtn.textContent = '⏸️ 멈춤';
+        pauseBtn.textContent = 'PAUSE';
     }
 }
 
@@ -350,18 +350,18 @@ function gameOver() {
     clearInterval(gameLoop);
 
     // 게임 오버 메시지
-    ctx.fillStyle = 'rgba(0, 0, 0, 0.7)';
+    ctx.fillStyle = 'rgba(0, 0, 0, 0.9)';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    ctx.fillStyle = 'white';
-    ctx.font = '30px Arial';
+    ctx.fillStyle = '#00ff00';
+    ctx.font = '30px "Courier New"';
     ctx.textAlign = 'center';
-    ctx.fillText('게임 오버!', canvas.width / 2, canvas.height / 2 - 20);
+    ctx.fillText('GAME OVER', canvas.width / 2, canvas.height / 2 - 20);
 
-    ctx.font = '20px Arial';
-    ctx.fillText('점수: ' + score, canvas.width / 2, canvas.height / 2 + 20);
+    ctx.font = '20px "Courier New"';
+    ctx.fillText('SCORE: ' + score, canvas.width / 2, canvas.height / 2 + 20);
 
-    alert('게임 오버! 점수: ' + score);
+    alert('GAME OVER! SCORE: ' + score);
 }
 
 // 처음 화면 그리기
