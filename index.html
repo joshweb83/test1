@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎮 재미있는 테트리스 게임</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- 게임 전체를 감싸는 큰 상자 -->
+    <div class="game-container">
+
+        <!-- 게임 제목 -->
+        <h1>🎮 테트리스 게임</h1>
+
+        <!-- 게임 정보 (점수, 레벨) -->
+        <div class="game-info">
+            <div class="info-box">
+                <h3>점수</h3>
+                <div id="score">0</div>
+            </div>
+            <div class="info-box">
+                <h3>레벨</h3>
+                <div id="level">1</div>
+            </div>
+            <div class="info-box">
+                <h3>없앤 줄</h3>
+                <div id="lines">0</div>
+            </div>
+        </div>
+
+        <!-- 게임판 (블록이 떨어지는 곳) -->
+        <canvas id="tetris" width="240" height="400"></canvas>
+
+        <!-- 게임 버튼들 -->
+        <div class="controls">
+            <button id="startBtn" onclick="startGame()">🎮 게임 시작</button>
+            <button id="pauseBtn" onclick="pauseGame()">⏸️ 멈춤</button>
+        </div>
+
+        <!-- 게임 조작 방법 설명 -->
+        <div class="instructions">
+            <h3>🎯 조작 방법</h3>
+            <p>⬅️ 왼쪽 화살표: 왼쪽으로 이동</p>
+            <p>➡️ 오른쪽 화살표: 오른쪽으로 이동</p>
+            <p>⬇️ 아래 화살표: 빨리 떨어뜨리기</p>
+            <p>⬆️ 위 화살표: 블록 돌리기</p>
+            <p>스페이스바: 한 번에 떨어뜨리기</p>
+        </div>
+
+    </div>
+
+    <!-- 자바스크립트 파일 연결 -->
+    <script src="script.js"></script>
+</body>
+</html>

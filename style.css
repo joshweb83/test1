@@ -1,0 +1,142 @@
+/* 전체 페이지 스타일 */
+body {
+    margin: 0;
+    padding: 20px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* 게임 전체를 감싸는 상자 */
+.game-container {
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    max-width: 400px;
+}
+
+/* 게임 제목 */
+h1 {
+    color: #667eea;
+    margin-top: 0;
+    font-size: 2.5em;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* 게임 정보 (점수, 레벨, 줄) */
+.game-info {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+    gap: 10px;
+}
+
+.info-box {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    padding: 15px;
+    border-radius: 15px;
+    flex: 1;
+    color: white;
+}
+
+.info-box h3 {
+    margin: 0 0 10px 0;
+    font-size: 0.9em;
+}
+
+.info-box div {
+    font-size: 1.8em;
+    font-weight: bold;
+}
+
+/* 게임판 (캔버스) */
+#tetris {
+    border: 5px solid #667eea;
+    border-radius: 10px;
+    background-color: #1a1a2e;
+    display: block;
+    margin: 0 auto 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* 버튼들 */
+.controls {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+button {
+    flex: 1;
+    padding: 15px 25px;
+    font-size: 1.1em;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+#startBtn {
+    background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+    color: white;
+}
+
+#startBtn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(67, 233, 123, 0.4);
+}
+
+#pauseBtn {
+    background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+    color: white;
+}
+
+#pauseBtn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(250, 112, 154, 0.4);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+/* 조작 방법 설명 */
+.instructions {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 15px;
+    text-align: left;
+}
+
+.instructions h3 {
+    margin-top: 0;
+    color: #667eea;
+    text-align: center;
+}
+
+.instructions p {
+    margin: 8px 0;
+    color: #333;
+    font-size: 0.9em;
+}
+
+/* 반응형 - 작은 화면에서도 잘 보이게 */
+@media (max-width: 500px) {
+    .game-container {
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 2em;
+    }
+
+    .game-info {
+        flex-direction: column;
+    }
+}
