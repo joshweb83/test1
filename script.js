@@ -366,3 +366,84 @@ function gameOver() {
 
 // 처음 화면 그리기
 draw();
+
+// 모바일 터치 컨트롤 버튼 이벤트
+document.getElementById('leftBtn').addEventListener('touchstart', (e) => {
+    e.preventDefault();
+    if (gameRunning && !gamePaused) {
+        moveLeft();
+        draw();
+    }
+});
+
+document.getElementById('rightBtn').addEventListener('touchstart', (e) => {
+    e.preventDefault();
+    if (gameRunning && !gamePaused) {
+        moveRight();
+        draw();
+    }
+});
+
+document.getElementById('downBtn').addEventListener('touchstart', (e) => {
+    e.preventDefault();
+    if (gameRunning && !gamePaused) {
+        moveDown();
+        score += 1;
+        updateScore();
+        draw();
+    }
+});
+
+document.getElementById('rotateBtn').addEventListener('touchstart', (e) => {
+    e.preventDefault();
+    if (gameRunning && !gamePaused) {
+        rotate();
+        draw();
+    }
+});
+
+document.getElementById('dropBtn').addEventListener('touchstart', (e) => {
+    e.preventDefault();
+    if (gameRunning && !gamePaused) {
+        drop();
+        draw();
+    }
+});
+
+// 마우스 클릭도 지원
+document.getElementById('leftBtn').addEventListener('click', () => {
+    if (gameRunning && !gamePaused) {
+        moveLeft();
+        draw();
+    }
+});
+
+document.getElementById('rightBtn').addEventListener('click', () => {
+    if (gameRunning && !gamePaused) {
+        moveRight();
+        draw();
+    }
+});
+
+document.getElementById('downBtn').addEventListener('click', () => {
+    if (gameRunning && !gamePaused) {
+        moveDown();
+        score += 1;
+        updateScore();
+        draw();
+    }
+});
+
+document.getElementById('rotateBtn').addEventListener('click', () => {
+    if (gameRunning && !gamePaused) {
+        rotate();
+        draw();
+    }
+});
+
+document.getElementById('dropBtn').addEventListener('click', () => {
+    if (gameRunning && !gamePaused) {
+        drop();
+        draw();
+    }
+});

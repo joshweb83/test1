@@ -32,6 +32,21 @@
         <!-- 게임판 (블록이 떨어지는 곳) -->
         <canvas id="tetris" width="240" height="400"></canvas>
 
+        <!-- 모바일 터치 컨트롤 -->
+        <div class="mobile-controls">
+            <div class="control-row">
+                <button class="touch-btn rotate-btn" id="rotateBtn">↻</button>
+            </div>
+            <div class="control-row">
+                <button class="touch-btn" id="leftBtn">←</button>
+                <button class="touch-btn" id="downBtn">↓</button>
+                <button class="touch-btn" id="rightBtn">→</button>
+            </div>
+            <div class="control-row">
+                <button class="touch-btn drop-btn" id="dropBtn">DROP</button>
+            </div>
+        </div>
+
         <!-- 게임 버튼들 -->
         <div class="controls">
             <button id="startBtn" onclick="startGame()">START</button>

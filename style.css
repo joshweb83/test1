@@ -113,6 +113,52 @@ button:active {
     transform: scale(0.95);
 }
 
+/* 모바일 터치 컨트롤 */
+.mobile-controls {
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.control-row {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.touch-btn {
+    width: 70px;
+    height: 70px;
+    font-size: 1.8em;
+    border: 3px solid #00ff00;
+    background: #000;
+    color: #00ff00;
+    cursor: pointer;
+    font-weight: bold;
+    font-family: 'Courier New', monospace;
+    transition: all 0.1s;
+    flex: none;
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.touch-btn:active {
+    background: #00ff00;
+    color: #000;
+    transform: scale(0.95);
+}
+
+.rotate-btn {
+    width: 150px;
+}
+
+.drop-btn {
+    width: 230px;
+    font-size: 1.2em;
+}
+
 /* 조작 방법 설명 */
 .instructions {
     background: #000;
@@ -137,8 +183,13 @@ button:active {
 
 /* 반응형 - 작은 화면에서도 잘 보이게 */
 @media (max-width: 500px) {
+    body {
+        padding: 10px;
+    }
+
     .game-container {
         padding: 15px;
+        max-width: 100%;
     }
 
     h1 {
@@ -146,6 +197,51 @@ button:active {
     }
 
     .game-info {
-        flex-direction: column;
+        gap: 5px;
+    }
+
+    .info-box {
+        padding: 10px;
+    }
+
+    .info-box h3 {
+        font-size: 0.7em;
+    }
+
+    .info-box div {
+        font-size: 1.3em;
+    }
+
+    #tetris {
+        max-width: 100%;
+        height: auto;
+    }
+
+    /* 모바일에서는 설명 숨기기 */
+    .instructions {
+        display: none;
+    }
+
+    /* 터치 버튼 크기 조정 */
+    .touch-btn {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5em;
+    }
+
+    .rotate-btn {
+        width: 130px;
+    }
+
+    .drop-btn {
+        width: 190px;
+        font-size: 1em;
+    }
+}
+
+/* 데스크톱에서는 터치 컨트롤 숨기기 */
+@media (min-width: 501px) {
+    .mobile-controls {
+        display: none;
     }
 }
