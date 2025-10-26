@@ -213,8 +213,9 @@ button:active {
     }
 
     #tetris {
-        max-width: 100%;
-        height: auto;
+        width: 240px;
+        height: 400px;
+        max-width: 90%;
     }
 
     /* 모바일에서는 설명 숨기기 */
