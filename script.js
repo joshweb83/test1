@@ -230,9 +230,10 @@ function removeLines() {
 
 // 점수 화면에 표시하기
 function updateScore() {
-    document.getElementById('score').textContent = score;
-    document.getElementById('level').textContent = level;
-    document.getElementById('lines').textContent = lines;
+    // 아케이드 스타일 점수 표시 (000000 형식)
+    document.getElementById('score').textContent = String(score).padStart(6, '0');
+    document.getElementById('level').textContent = String(level).padStart(2, '0');
+    document.getElementById('lines').textContent = String(lines).padStart(3, '0');
 }
 
 // 블록 아래로 이동
@@ -349,9 +350,9 @@ function pauseGame() {
     const pauseBtn = document.getElementById('pauseBtn');
 
     if (gamePaused) {
-        pauseBtn.textContent = 'RESUME';
+        pauseBtn.innerHTML = '<span class="btn-icon">▶</span><span class="btn-text">RESUME</span>';
     } else {
-        pauseBtn.textContent = 'PAUSE';
+        pauseBtn.innerHTML = '<span class="btn-icon">⏸</span><span class="btn-text">PAUSE</span>';
     }
 }
 

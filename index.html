@@ -3,69 +3,135 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🎮 재미있는 테트리스 게임</title>
+    <title>🎮 TETRIS - Classic Arcade Game</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- 게임 전체를 감싸는 큰 상자 -->
-    <div class="game-container">
+    <!-- 아케이드 게임기 프레임 -->
+    <div class="arcade-cabinet">
 
-        <!-- 게임 제목 -->
-        <h1>TETRIS</h1>
-
-        <!-- 게임 정보 (점수, 레벨) -->
-        <div class="game-info">
-            <div class="info-box">
-                <h3>점수</h3>
-                <div id="score">0</div>
-            </div>
-            <div class="info-box">
-                <h3>레벨</h3>
-                <div id="level">1</div>
-            </div>
-            <div class="info-box">
-                <h3>없앤 줄</h3>
-                <div id="lines">0</div>
+        <!-- 게임기 상단 로고 -->
+        <div class="cabinet-top">
+            <div class="logo">
+                <div class="logo-text">T E T R I S</div>
+                <div class="logo-subtitle">★ CLASSIC EDITION ★</div>
             </div>
         </div>
 
-        <!-- 게임 버튼들 -->
-        <div class="controls">
-            <button id="startBtn" onclick="startGame()">START</button>
-            <button id="pauseBtn" onclick="pauseGame()">PAUSE</button>
+        <!-- 게임 화면 프레임 -->
+        <div class="screen-bezel">
+
+            <!-- 게임 컨테이너 -->
+            <div class="game-container">
+
+                <!-- 상태 표시 패널 -->
+                <div class="status-panel">
+                    <div class="stat-display">
+                        <div class="stat-icon">⭐</div>
+                        <div class="stat-label">SCORE</div>
+                        <div class="stat-value" id="score">000000</div>
+                    </div>
+                    <div class="stat-display">
+                        <div class="stat-icon">🎯</div>
+                        <div class="stat-label">LEVEL</div>
+                        <div class="stat-value" id="level">01</div>
+                    </div>
+                    <div class="stat-display">
+                        <div class="stat-icon">📊</div>
+                        <div class="stat-label">LINES</div>
+                        <div class="stat-value" id="lines">000</div>
+                    </div>
+                </div>
+
+                <!-- 게임 시작/일시정지 버튼 -->
+                <div class="game-controls">
+                    <button class="game-btn start-btn" id="startBtn" onclick="startGame()">
+                        <span class="btn-icon">▶</span>
+                        <span class="btn-text">START</span>
+                    </button>
+                    <button class="game-btn pause-btn" id="pauseBtn" onclick="pauseGame()">
+                        <span class="btn-icon">⏸</span>
+                        <span class="btn-text">PAUSE</span>
+                    </button>
+                </div>
+
+                <!-- 게임판 -->
+                <div class="screen-wrapper">
+                    <canvas id="tetris"></canvas>
+                    <div class="screen-scanlines"></div>
+                </div>
+
+                <!-- 모바일 조이패드 -->
+                <div class="mobile-controls">
+                    <div class="dpad-container">
+                        <div class="dpad">
+                            <button class="dpad-btn dpad-up" id="rotateBtn">
+                                <span>↻</span>
+                            </button>
+                            <button class="dpad-btn dpad-left" id="leftBtn">
+                                <span>←</span>
+                            </button>
+                            <button class="dpad-btn dpad-center"></button>
+                            <button class="dpad-btn dpad-right" id="rightBtn">
+                                <span>→</span>
+                            </button>
+                            <button class="dpad-btn dpad-down" id="downBtn">
+                                <span>↓</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="action-buttons">
+                        <button class="action-btn" id="dropBtn">
+                            <span class="action-label">DROP</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 키보드 조작 안내 (데스크톱) -->
+                <div class="keyboard-guide">
+                    <div class="guide-title">⌨ KEYBOARD CONTROLS</div>
+                    <div class="guide-grid">
+                        <div class="guide-item">
+                            <kbd>←</kbd>
+                            <span>Move Left</span>
+                        </div>
+                        <div class="guide-item">
+                            <kbd>→</kbd>
+                            <span>Move Right</span>
+                        </div>
+                        <div class="guide-item">
+                            <kbd>↓</kbd>
+                            <span>Soft Drop</span>
+                        </div>
+                        <div class="guide-item">
+                            <kbd>↑</kbd>
+                            <span>Rotate</span>
+                        </div>
+                        <div class="guide-item">
+                            <kbd>SPACE</kbd>
+                            <span>Hard Drop</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </div>
 
-        <!-- 게임판 (블록이 떨어지는 곳) -->
-        <canvas id="tetris"></canvas>
-
-        <!-- 모바일 터치 컨트롤 -->
-        <div class="mobile-controls">
-            <div class="control-row">
-                <button class="touch-btn rotate-btn" id="rotateBtn">↻</button>
+        <!-- 게임기 하단 데코레이션 -->
+        <div class="cabinet-bottom">
+            <div class="speaker">
+                <div class="speaker-grill"></div>
+                <div class="speaker-grill"></div>
             </div>
-            <div class="control-row">
-                <button class="touch-btn" id="leftBtn">←</button>
-                <button class="touch-btn" id="downBtn">↓</button>
-                <button class="touch-btn" id="rightBtn">→</button>
+            <div class="coin-slot">INSERT COIN</div>
+            <div class="speaker">
+                <div class="speaker-grill"></div>
+                <div class="speaker-grill"></div>
             </div>
-            <div class="control-row">
-                <button class="touch-btn drop-btn" id="dropBtn">DROP</button>
-            </div>
-        </div>
-
-        <!-- 게임 조작 방법 설명 -->
-        <div class="instructions">
-            <h3>CONTROLS</h3>
-            <p>← LEFT : Move Left</p>
-            <p>→ RIGHT : Move Right</p>
-            <p>↓ DOWN : Soft Drop</p>
-            <p>↑ UP : Rotate</p>
-            <p>SPACE : Hard Drop</p>
         </div>
 
     </div>
 
-    <!-- 자바스크립트 파일 연결 -->
     <script src="script.js"></script>
 </body>
 </html>
