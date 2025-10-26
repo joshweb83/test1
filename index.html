@@ -3,54 +3,135 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>든이의 계산기 - Deun's Calculator</title>
+    <title>🎮 TETRIS - Classic Arcade Game</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="calculator">
-        <div class="brand">
-            <div class="brand-name">든이의 계산기</div>
-            <div class="model">Deun's Calculator</div>
-            <div class="product-code">DC-2024</div>
+    <!-- 아케이드 게임기 프레임 -->
+    <div class="arcade-cabinet">
+
+        <!-- 게임기 상단 로고 -->
+        <div class="cabinet-top">
+            <div class="logo">
+                <div class="logo-text">T E T R I S</div>
+                <div class="logo-subtitle">★ CLASSIC EDITION ★</div>
+            </div>
         </div>
-        <div class="display">
-            <div class="history" id="history"></div>
-            <div class="current" id="current">0</div>
+
+        <!-- 게임 화면 프레임 -->
+        <div class="screen-bezel">
+
+            <!-- 게임 컨테이너 -->
+            <div class="game-container">
+
+                <!-- 상태 표시 패널 -->
+                <div class="status-panel">
+                    <div class="stat-display">
+                        <div class="stat-icon">⭐</div>
+                        <div class="stat-label">SCORE</div>
+                        <div class="stat-value" id="score">000000</div>
+                    </div>
+                    <div class="stat-display">
+                        <div class="stat-icon">🎯</div>
+                        <div class="stat-label">LEVEL</div>
+                        <div class="stat-value" id="level">01</div>
+                    </div>
+                    <div class="stat-display">
+                        <div class="stat-icon">📊</div>
+                        <div class="stat-label">LINES</div>
+                        <div class="stat-value" id="lines">000</div>
+                    </div>
+                </div>
+
+                <!-- 게임 시작/일시정지 버튼 -->
+                <div class="game-controls">
+                    <button class="game-btn start-btn" id="startBtn" onclick="startGame()">
+                        <span class="btn-icon">▶</span>
+                        <span class="btn-text">START</span>
+                    </button>
+                    <button class="game-btn pause-btn" id="pauseBtn" onclick="pauseGame()">
+                        <span class="btn-icon">⏸</span>
+                        <span class="btn-text">PAUSE</span>
+                    </button>
+                </div>
+
+                <!-- 게임판 -->
+                <div class="screen-wrapper">
+                    <canvas id="tetris"></canvas>
+                    <div class="screen-scanlines"></div>
+                </div>
+
+                <!-- 모바일 조이패드 -->
+                <div class="mobile-controls">
+                    <div class="dpad-container">
+                        <div class="dpad">
+                            <button class="dpad-btn dpad-up" id="rotateBtn">
+                                <span>↻</span>
+                            </button>
+                            <button class="dpad-btn dpad-left" id="leftBtn">
+                                <span>←</span>
+                            </button>
+                            <button class="dpad-btn dpad-center"></button>
+                            <button class="dpad-btn dpad-right" id="rightBtn">
+                                <span>→</span>
+                            </button>
+                            <button class="dpad-btn dpad-down" id="downBtn">
+                                <span>↓</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="action-buttons">
+                        <button class="action-btn" id="dropBtn">
+                            <span class="action-label">DROP</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 키보드 조작 안내 (데스크톱) -->
+                <div class="keyboard-guide">
+                    <div class="guide-title">⌨ KEYBOARD CONTROLS</div>
+                    <div class="guide-grid">
+                        <div class="guide-item">
+                            <kbd>←</kbd>
+                            <span>Move Left</span>
+                        </div>
+                        <div class="guide-item">
+                            <kbd>→</kbd>
+                            <span>Move Right</span>
+                        </div>
+                        <div class="guide-item">
+                            <kbd>↓</kbd>
+                            <span>Soft Drop</span>
+                        </div>
+                        <div class="guide-item">
+                            <kbd>↑</kbd>
+                            <span>Rotate</span>
+                        </div>
+                        <div class="guide-item">
+                            <kbd>SPACE</kbd>
+                            <span>Hard Drop</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </div>
-        
-        <div class="buttons">
-            <!-- 첫 번째 줄 -->
-            <button class="btn function" onclick="clearEntry()">CE</button>
-            <button class="btn function" onclick="clearAll()">C</button>
-            <button class="btn function" onclick="backspace()">⌫</button>
-            <button class="btn operator" onclick="inputOperator('/')">÷</button>
-            
-            <!-- 두 번째 줄 -->
-            <button class="btn number" onclick="inputNumber('7')">7</button>
-            <button class="btn number" onclick="inputNumber('8')">8</button>
-            <button class="btn number" onclick="inputNumber('9')">9</button>
-            <button class="btn operator" onclick="inputOperator('*')">×</button>
-            
-            <!-- 세 번째 줄 -->
-            <button class="btn number" onclick="inputNumber('4')">4</button>
-            <button class="btn number" onclick="inputNumber('5')">5</button>
-            <button class="btn number" onclick="inputNumber('6')">6</button>
-            <button class="btn operator" onclick="inputOperator('-')">-</button>
-            
-            <!-- 네 번째 줄 -->
-            <button class="btn number" onclick="inputNumber('1')">1</button>
-            <button class="btn number" onclick="inputNumber('2')">2</button>
-            <button class="btn number" onclick="inputNumber('3')">3</button>
-            <button class="btn operator" onclick="inputOperator('+')">+</button>
-            
-            <!-- 다섯 번째 줄 -->
-            <button class="btn function" onclick="toggleSign()">±</button>
-            <button class="btn number" onclick="inputNumber('0')">0</button>
-            <button class="btn function" onclick="inputDecimal()">.</button>
-            <button class="btn equals" onclick="calculate()">=</button>
+
+        <!-- 게임기 하단 데코레이션 -->
+        <div class="cabinet-bottom">
+            <div class="speaker">
+                <div class="speaker-grill"></div>
+                <div class="speaker-grill"></div>
+            </div>
+            <div class="coin-slot">INSERT COIN</div>
+            <div class="speaker">
+                <div class="speaker-grill"></div>
+                <div class="speaker-grill"></div>
+            </div>
         </div>
+
     </div>
-    
+
     <script src="script.js"></script>
 </body>
 </html>

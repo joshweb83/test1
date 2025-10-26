@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "name": "tetris-game",
+  "builds": [
+    {
+      "src": "*.html",
+      "use": "@vercel/static"
+    }
+  ]
+}
