@@ -3,54 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>든이의 계산기 - Deun's Calculator</title>
+    <title>이구동성 게임</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="calculator">
-        <div class="brand">
-            <div class="brand-name">든이의 계산기</div>
-            <div class="model">Deun's Calculator</div>
-            <div class="product-code">DC-2024</div>
-        </div>
-        <div class="display">
-            <div class="history" id="history"></div>
-            <div class="current" id="current">0</div>
-        </div>
-        
-        <div class="buttons">
-            <!-- 첫 번째 줄 -->
-            <button class="btn function" onclick="clearEntry()">CE</button>
-            <button class="btn function" onclick="clearAll()">C</button>
-            <button class="btn function" onclick="backspace()">⌫</button>
-            <button class="btn operator" onclick="inputOperator('/')">÷</button>
-            
-            <!-- 두 번째 줄 -->
-            <button class="btn number" onclick="inputNumber('7')">7</button>
-            <button class="btn number" onclick="inputNumber('8')">8</button>
-            <button class="btn number" onclick="inputNumber('9')">9</button>
-            <button class="btn operator" onclick="inputOperator('*')">×</button>
-            
-            <!-- 세 번째 줄 -->
-            <button class="btn number" onclick="inputNumber('4')">4</button>
-            <button class="btn number" onclick="inputNumber('5')">5</button>
-            <button class="btn number" onclick="inputNumber('6')">6</button>
-            <button class="btn operator" onclick="inputOperator('-')">-</button>
-            
-            <!-- 네 번째 줄 -->
-            <button class="btn number" onclick="inputNumber('1')">1</button>
-            <button class="btn number" onclick="inputNumber('2')">2</button>
-            <button class="btn number" onclick="inputNumber('3')">3</button>
-            <button class="btn operator" onclick="inputOperator('+')">+</button>
-            
-            <!-- 다섯 번째 줄 -->
-            <button class="btn function" onclick="toggleSign()">±</button>
-            <button class="btn number" onclick="inputNumber('0')">0</button>
-            <button class="btn function" onclick="inputDecimal()">.</button>
-            <button class="btn equals" onclick="calculate()">=</button>
-        </div>
-    </div>
-    
+    <main class="app">
+        <header class="app-header">
+            <h1>🎯 이구동성 게임</h1>
+            <p>같은 주제에 대해 같은 단어를 떠올려 보세요!</p>
+        </header>
+
+        <section class="card controls">
+            <label for="promptInput">주제</label>
+            <div class="prompt-row">
+                <input id="promptInput" type="text" placeholder="예: 편의점에서 자주 사는 것" maxlength="60">
+                <button id="startBtn" class="btn primary">라운드 시작</button>
+            </div>
+            <p class="hint">새 라운드를 시작하면 모든 입력이 초기화됩니다.</p>
+        </section>
+
+        <section class="card round" id="roundSection" hidden>
+            <h2 id="roundPrompt"></h2>
+            <form id="answerForm" class="answer-form">
+                <div class="player-grid">
+                    <label>플레이어 1<input name="player1" type="text" required maxlength="20" autocomplete="off"></label>
+                    <label>플레이어 2<input name="player2" type="text" required maxlength="20" autocomplete="off"></label>
+                    <label>플레이어 3<input name="player3" type="text" required maxlength="20" autocomplete="off"></label>
+                    <label>플레이어 4<input name="player4" type="text" required maxlength="20" autocomplete="off"></label>
+                </div>
+                <button type="submit" class="btn success">정답 공개</button>
+            </form>
+        </section>
+
+        <section class="card result" id="resultSection" hidden>
+            <h2>📊 결과</h2>
+            <p id="scoreText"></p>
+            <ul id="resultList"></ul>
+            <button id="retryBtn" class="btn">같은 주제로 다시</button>
+        </section>
+    </main>
+
     <script src="script.js"></script>
 </body>
 </html>
